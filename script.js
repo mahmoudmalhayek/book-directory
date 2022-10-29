@@ -79,18 +79,24 @@ books.forEach((book,_index)=> {
     button.innerText = "Add to favorite"
     
     
+
+
+
     button.onclick = function favoriteButton() {
-        books.favorite = true;
+        
+        console.log("before",books)
+        books[_index].favorite = true;
+        
+        
+        localStorage.setItem("myBooks",JSON.stringify([...books]));
+        console.log("after",books)
+        
     }
-
-
     // button.onclick = function handleButton() {
     //     fav.push(book);
     //     console.log(fav)
     // }
     
-    
-
 });
 
-    
+// localStorage.setItem("myBooks",JSON.stringify(books));
