@@ -24,7 +24,7 @@ a1.setAttribute("target", "blank");
 a2.setAttribute("href", "#");
 a.innerHTML = "Home";
 a1.innerHTML = "FavoriteList";
-a2.innerHTML = "Settings";
+
 li.appendChild(a);
 li.appendChild(a1);
 li.appendChild(a2);

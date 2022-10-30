@@ -1,9 +1,17 @@
 const container = document.createElement("div");
 const navbar = document.createElement("div");
+const popup = document.createElement("div");
+const popupContent = document.createElement("div");
+
 document.body.append(navbar);
+document.body.append(popup)
 document.body.append(container);
+popup.append(popupContent)
+
 container.setAttribute("class", "container");
 navbar.setAttribute("class", "navbar");
+popup.setAttribute("class", "popup");
+popupContent.setAttribute("class", "popup-content");
 
 var img = document.createElement("IMG");
 img.src = "https://www.iconpacks.net/icons/2/free-book-icon-4986-thumb.png";
@@ -26,11 +34,48 @@ a1.setAttribute("target", "blank");
 a2.setAttribute("href", "#");
 a.innerHTML = "Home";
 a1.innerHTML = "FavoriteList";
-a2.innerHTML = "Settings";
+a2.innerHTML = "AddBook";
+a2.setAttribute("class","addBookButton")
 li.appendChild(a);
 li.appendChild(a1);
 li.appendChild(a2);
 ul.appendChild(li);
+
+const input1 = document.createElement('input')
+popupContent.appendChild(input1)
+input1.setAttribute('class','input','type','text')
+input1.setAttribute('placeholder','Title Of Book')
+
+const input2 = document.createElement('input')
+popupContent.appendChild(input2)
+input2.setAttribute('class','input','type','text')
+input2.setAttribute('placeholder','Author Of Book')
+
+const input3 = document.createElement('input')
+popupContent.appendChild(input3)
+input3.setAttribute('class','input','type','text')
+input3.setAttribute('placeholder','Edition Of Book')
+
+const addButton = document.createElement("button");
+addButton.setAttribute('class','input')
+popupContent.appendChild(addButton);
+addButton.innerText = 'Submit'
+
+const close = document.createElement("img")
+close.setAttribute('class','closeImg')
+close.src = "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-close-512.png"
+popupContent.append(close)
+
+
+
+
+document.querySelector('.addBookButton').addEventListener("click",function () {
+    document.querySelector(".popup").style.display = "flex"
+})
+ document.querySelector('.closeImg').addEventListener("click",function () {
+     document.querySelector(".popup").style.display = "none"
+ })
+
 
 let books = [
   {
@@ -88,6 +133,9 @@ books.forEach((book, _index) => {
   button.setAttribute("id", `button${_index}`);
   booksDisplay.appendChild(button);
   button.innerText = "Add to favorite";
+
+  localStorage.setItem("myBooks", JSON.stringify([...books]));
+
 
   button.addEventListener("click", favoriteButton);
 
