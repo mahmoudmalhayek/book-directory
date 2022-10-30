@@ -43,31 +43,52 @@ ul.appendChild(li);
 
 const input1 = document.createElement('input')
 popupContent.appendChild(input1)
+input1.setAttribute('id','text1')
+
 input1.setAttribute('class','input','type','text')
 input1.setAttribute('placeholder','Title Of Book')
+document.getElementById("text1").required = true;
 
 const input2 = document.createElement('input')
 popupContent.appendChild(input2)
+input2.setAttribute('id','text2')
+
 input2.setAttribute('class','input','type','text')
 input2.setAttribute('placeholder','Author Of Book')
+document.getElementById("text2").required = true;
 
 const input3 = document.createElement('input')
 popupContent.appendChild(input3)
+
+input3.setAttribute('id','text3')
 input3.setAttribute('class','input','type','text')
 input3.setAttribute('placeholder','Edition Of Book')
+document.getElementById("text3").required = true;
 
 const addButton = document.createElement("button");
 addButton.setAttribute('class','input')
+addButton.setAttribute('id','addButton')
 popupContent.appendChild(addButton);
 addButton.innerText = 'Submit'
+
+
+addButton.addEventListener("click",function () {
+    let newBook = {
+        image: "https://mofibo.com/images/640x640/0000503069.jpg",
+        name: document.getElementById("text1").value,
+        author: document.getElementById("text2").value,
+        edition: document.getElementById("text3").value,
+      };
+      books.push(newBook);
+})
+
+
+
 
 const close = document.createElement("img")
 close.setAttribute('class','closeImg')
 close.src = "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-close-512.png"
 popupContent.append(close)
-
-
-
 
 document.querySelector('.addBookButton').addEventListener("click",function () {
     document.querySelector(".popup").style.display = "flex"
@@ -75,6 +96,8 @@ document.querySelector('.addBookButton').addEventListener("click",function () {
  document.querySelector('.closeImg').addEventListener("click",function () {
      document.querySelector(".popup").style.display = "none"
  })
+
+
 
 
 let books = [
