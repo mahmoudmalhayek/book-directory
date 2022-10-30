@@ -69,7 +69,7 @@ favBooks.forEach((book, _index) => {
 
     function favoriteButton() {
       favBooks[_index].favorite = false;
-      localStorage.setItem("favBooks", JSON.stringify([...favBooks]));
+      localStorage.setItem("myBooks", JSON.stringify([...favBooks]));
     }
   }
 });
